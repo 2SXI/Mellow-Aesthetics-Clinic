@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mellow Aesthetics Clinic | Sandton</title>
+<meta name="description" content="Mellow Aesthetics Clinic — an aesthetics and beauty clinic on Kelvin Drive, Sandton. Enquire to find out more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211F22;
+    --base:#F5F1EE;
+    --card:#FFFFFF;
+    --mauve:#9C7C88;
+    --mauve-deep:#7A5C68;
+    --mauve-soft:#EDE3E6;
+    --line:#E8E0DA;
+    --muted:#6B6460;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--base);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Instrument Serif',serif;
+    font-weight:400;
+    line-height:1.15;
+    color:var(--ink);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+  section{padding:100px 0;}
+  @media(max-width:700px){section{padding:60px 0;}}
+
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:15px 30px;border-radius:40px;font-weight:600;font-size:14.5px;
+    font-family:'Inter',sans-serif;
+    border:1.5px solid transparent;cursor:pointer;transition:all .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-mauve{background:var(--mauve-deep);color:#fff;box-shadow:0 12px 26px -10px rgba(122,92,104,0.55);}
+  .btn-mauve:hover{background:var(--ink);}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,0.55);color:#fff;}
+  .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.1);}
+  .btn-outline-dark{background:transparent;border-color:var(--ink);color:var(--ink);}
+  .btn-outline-dark:hover{background:var(--ink);color:#fff;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,241,238,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;}
+  .logo{font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;letter-spacing:0.3px;}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{font-weight:500;font-size:14px;color:var(--muted);}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{display:flex;align-items:center;gap:14px;}
+  .nav-cta .btn{padding:11px 22px;font-size:13px;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--ink);border-radius:2px;}
+
+  @media(max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .nav.open .nav-links{
+      display:flex;flex-direction:column;align-items:flex-start;gap:18px;
+      position:absolute;top:70px;left:0;right:0;background:var(--base);
+      padding:24px;border-bottom:1px solid var(--line);
+    }
+  }
+
+  /* Hero - full bleed */
+  .hero{position:relative;padding:0;}
+  .hero-bg{position:relative;height:640px;overflow:hidden;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(95deg, rgba(33,31,34,0.86) 18%, rgba(33,31,34,0.5) 55%, rgba(33,31,34,0.15) 100%);
+  }
+  .hero-content{position:absolute;inset:0;display:flex;align-items:center;z-index:2;}
+  .hero-content .wrap{width:100%;}
+  .hero-inner{max-width:600px;}
+  .eyebrow-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);
+    color:#fff;padding:8px 18px;border-radius:999px;
+    font-size:13px;font-weight:600;letter-spacing:0.2px;
+    margin-bottom:26px;backdrop-filter:blur(4px);
+  }
+  .hero h1{font-size:58px;font-style:italic;font-weight:400;letter-spacing:-0.5px;margin-bottom:22px;color:#fff;}
+  @media(max-width:600px){.hero h1{font-size:38px;}}
+  .hero p.lede{font-size:17.5px;color:#E2DADD;max-width:480px;margin-bottom:36px;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  @media(max-width:700px){.hero-bg{height:560px;}}
+
+  /* Stat bar */
+  .stat-bar{background:var(--ink);padding:0;}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+  @media(max-width:700px){.stat-grid{grid-template-columns:1fr;}}
+  .stat-cell{padding:34px 28px;text-align:center;border-right:1px solid rgba(255,255,255,0.1);}
+  .stat-cell:last-child{border-right:none;}
+  @media(max-width:700px){.stat-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
+    .stat-cell:last-child{border-bottom:none;}}
+  .stat-cell .big{font-family:'Instrument Serif',serif;font-style:italic;font-size:28px;color:#fff;margin-bottom:4px;}
+  .stat-cell .lbl{font-size:12.5px;color:#C4BBC0;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;}
+
+  /* Section head */
+  .section-head{max-width:580px;margin-bottom:52px;}
+  .eyebrow{
+    font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--mauve-deep);margin-bottom:12px;display:block;
+  }
+  .section-head h2{font-size:38px;font-style:italic;font-weight:400;margin-bottom:14px;}
+  .section-head p{color:var(--muted);font-size:16px;}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .about-grid img{border-radius:4px;height:420px;object-fit:cover;}
+  @media(max-width:860px){.about-grid img{height:300px;}}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:15.5px;}
+
+  /* Why cards */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:800px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:34px 28px;}
+  .why-card .ico{
+    width:52px;height:52px;border-radius:50%;background:var(--mauve-soft);color:var(--mauve-deep);
+    display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px;
+  }
+  .why-card h3{font-size:21px;font-style:italic;margin-bottom:10px;}
+  .why-card p{color:var(--muted);font-size:14.5px;}
+
+  /* Process - mauve feature band */
+  .process{background:var(--mauve-deep);color:#fff;overflow:hidden;}
+  .proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  @media(max-width:860px){.proc-grid{grid-template-columns:1fr;gap:32px;}}
+  .process .eyebrow{color:#E8D3DA;}
+  .process h2{color:#fff;font-size:36px;margin-bottom:10px;}
+  .process .section-head p{color:#EBDEE1;}
+  .proc-steps{display:flex;flex-direction:column;gap:22px;}
+  .proc-step{display:flex;gap:18px;align-items:flex-start;}
+  .proc-step .num{
+    font-family:'Instrument Serif',serif;font-style:italic;font-size:26px;color:#fff;
+    background:rgba(255,255,255,0.15);width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .proc-step h3{color:#fff;font-size:19px;margin-bottom:4px;}
+  .proc-step p{color:#EBDEE1;font-size:14.5px;}
+  .proc-img{border-radius:4px;overflow:hidden;height:400px;}
+  .proc-img img{width:100%;height:100%;object-fit:cover;}
+  @media(max-width:860px){.proc-img{height:280px;}}
+
+  /* Gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:800px){.gallery{grid-template-columns:1fr 1fr;}}
+  @media(max-width:500px){.gallery{grid-template-columns:1fr;}}
+  .gallery figure{border-radius:4px;overflow:hidden;position:relative;height:230px;}
+  .gallery img{width:100%;height:100%;object-fit:cover;}
+  .gallery figcaption{
+    position:absolute;bottom:0;left:0;right:0;
+    background:linear-gradient(0deg, rgba(33,31,34,0.85), transparent);
+    color:#fff;padding:16px 18px 14px;font-size:14px;font-style:italic;font-family:'Instrument Serif',serif;
+  }
+
+  .note{
+    margin-top:36px;background:#FBF6EC;border:1px solid #EFE1C8;
+    border-radius:4px;padding:18px 22px;font-size:13.5px;color:#7A5C33;
+    border-left:3px solid var(--mauve);
+  }
+
+  /* FAQ */
+  .faq{background:#FFFFFF;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .faq-list{max-width:760px;}
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
+  .faq-item:first-child{padding-top:0;}
+  .faq-q{
+    display:flex;align-items:center;justify-content:space-between;cursor:pointer;
+    font-family:'Instrument Serif',serif;font-style:italic;font-size:19px;gap:16px;
+  }
+  .faq-q .plus{font-size:20px;color:var(--mauve-deep);flex-shrink:0;transition:transform .2s ease;font-family:'Inter',sans-serif;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .25s ease;
+    color:var(--muted);font-size:14.5px;line-height:1.7;
+  }
+  .faq-item.open .faq-a{max-height:240px;margin-top:14px;}
+
+  /* Visit / contact */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  @media(max-width:800px){.visit-grid{grid-template-columns:1fr;}}
+  .visit-card{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:34px;}
+  .visit-card h3{font-size:22px;font-style:italic;margin-bottom:20px;}
+
+  .info-line{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);}
+  .info-line:last-child{border-bottom:none;}
+  .info-line .ico{
+    width:36px;height:36px;border-radius:50%;background:var(--mauve-soft);color:var(--mauve-deep);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;
+  }
+  .info-line .txt .t1{font-size:11.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+  .info-line .txt .t2{font-size:15.5px;font-weight:500;color:var(--ink);}
+  .info-line a.t2:hover{color:var(--mauve-deep);}
+  .directions{margin-top:18px;display:inline-block;font-size:13.5px;font-weight:600;color:var(--mauve-deep);letter-spacing:0.2px;}
+  .directions:hover{text-decoration:underline;}
+
+  .ask-list{list-style:none;}
+  .ask-list li{
+    padding:9px 0 9px 24px;position:relative;font-size:14px;color:var(--muted);
+    border-bottom:1px solid var(--line);
+  }
+  .ask-list li:last-child{border-bottom:none;}
+  .ask-list li::before{content:"→";position:absolute;left:0;color:var(--mauve-deep);font-weight:700;}
+
+  /* CTA band */
+  .cta-band{position:relative;background:var(--ink);color:#fff;text-align:center;overflow:hidden;}
+  .cta-band::before{
+    content:"";position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1693004927824-f2623bbedc8b?auto=format&fit=crop&w=1600&q=60') center/cover;
+    opacity:0.16;
+  }
+  .cta-band .wrap{position:relative;z-index:1;}
+  .cta-band h2{font-size:36px;font-style:italic;margin-bottom:16px;color:#fff;}
+  .cta-band p{color:#D9D0D4;max-width:480px;margin:0 auto 32px;font-size:15.5px;}
+  .cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+  /* Footer */
+  footer{padding:36px 0;border-top:1px solid var(--line);}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  .footer-row p{font-size:13px;color:var(--muted);}
+
+  /* Mobile sticky bar */
+  .m-bar{
+    display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
+    background:#fff;border-top:1px solid var(--line);
+    padding:10px 14px;gap:10px;
+    box-shadow:0 -8px 24px rgba(33,31,34,0.1);
+  }
+  .m-bar .btn{flex:1;padding:13px;font-size:14px;}
+  @media(max-width:700px){
+    .m-bar{display:flex;}
+    body{padding-bottom:74px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav class="nav" id="nav">
+      <a href="#top" class="logo">Mellow</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#process">How It Works</a>
+        <a href="#faq">FAQs</a>
+        <a href="#visit">Contact</a>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-mauve" href="https://wa.me/27614079737?text=Hi%20Mellow%20Aesthetics%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20a%20treatment." target="_blank" rel="noopener">Enquire</a>
+        <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=80" alt="Woman receiving a calming facial treatment">
+      <div class="hero-content">
+        <div class="wrap">
+          <div class="hero-inner">
+            <span class="eyebrow-pill">● Kelvin Drive, Sandton</span>
+            <h1>Feel mellow in your own skin.</h1>
+            <p class="lede">Mellow Aesthetics Clinic is an aesthetics and beauty clinic based in Sandton, built around treatments suited to you. Get in touch to find out more.</p>
+            <div class="hero-actions">
+              <a class="btn btn-mauve" href="https://wa.me/27614079737?text=Hi%20Mellow%20Aesthetics%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20a%20treatment." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+              <a class="btn btn-outline" href="tel:+27614079737">061 407 9737</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar">
+    <div class="wrap stat-grid">
+      <div class="stat-cell"><div class="big">Sandton</div><div class="lbl">Kelvin Drive location</div></div>
+      <div class="stat-cell"><div class="big">Personalized</div><div class="lbl">Care built around you</div></div>
+      <div class="stat-cell"><div class="big">By Enquiry</div><div class="lbl">Message to book a visit</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=80" alt="Relaxing facial skincare treatment">
+      <div class="about-text">
+        <span class="eyebrow">The clinic</span>
+        <h2>Aesthetics &amp; beauty in Sandton</h2>
+        <p>Mellow Aesthetics Clinic is an aesthetics and beauty clinic based on Kelvin Drive, Sandton, Gauteng.</p>
+        <p>For a full treatment menu, pricing and practitioner information, please get in touch directly — our team can talk you through what's available and help you book.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MELLOW -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why Mellow</span>
+        <h2>Aesthetics, done thoughtfully</h2>
+        <p>A clinic built around looking and feeling your best.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="ico">✦</div>
+          <h3>Skincare &amp; Facials</h3>
+          <p>Treatments aimed at healthy, refreshed skin — ask us about current options.</p>
+        </div>
+        <div class="why-card">
+          <div class="ico">✦</div>
+          <h3>Aesthetic Treatments</h3>
+          <p>Get in touch to discuss the specific treatments we currently offer.</p>
+        </div>
+        <div class="why-card">
+          <div class="ico">✦</div>
+          <h3>Personal Consultation</h3>
+          <p>A conversation first, so any treatment plan is suited to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap proc-grid">
+      <div>
+        <span class="eyebrow">How it works</span>
+        <h2>From first message to treatment</h2>
+        <div class="proc-steps" style="margin-top:28px;">
+          <div class="proc-step">
+            <div class="num">1</div>
+            <div><h3>Reach out</h3><p>Message or call us about what you're interested in.</p></div>
+          </div>
+          <div class="proc-step">
+            <div class="num">2</div>
+            <div><h3>Have a consultation</h3><p>We talk through your skin, goals, and what might help.</p></div>
+          </div>
+          <div class="proc-step">
+            <div class="num">3</div>
+            <div><h3>Book your treatment</h3><p>We'll confirm timing, process and what to expect.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="proc-img">
+        <img src="https://images.unsplash.com/photo-1785861001619-b263ebd4e615?auto=format&fit=crop&w=900&q=80" alt="Aesthetics consultation between professional and client">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">A sense of the space</span>
+        <h2>What to expect</h2>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1761718210089-ba3bb5ccb54f?auto=format&fit=crop&w=700&q=80" alt="Facial treatment in progress">
+          <figcaption>Treatment in progress</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=700&q=80" alt="Skincare treatment at a calm clinic">
+          <figcaption>Calm, unhurried care</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?auto=format&fit=crop&w=700&q=80" alt="Minimal skincare still life">
+          <figcaption>Thoughtful detail</figcaption>
+        </figure>
+      </div>
+      <div class="note">The photos on this page are stock images standing in for real clinic and treatment-room photos — swap them for your own before this goes live. We haven't listed specific treatments, prices, practitioner names or hours here since none of that is publicly confirmed — please enquire directly.</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Good to know</span>
+        <h2>Frequently asked questions</h2>
+      </div>
+      <div class="faq-list" id="faqList">
+        <div class="faq-item open">
+          <div class="faq-q"><span>What treatments do you offer?</span><span class="plus">+</span></div>
+          <div class="faq-a">Message or call us on 061 407 9737 and our team can talk you through what's currently available.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Do I need a consultation first?</span><span class="plus">+</span></div>
+          <div class="faq-a">We recommend starting with a conversation so any treatment is suited to your skin and goals — get in touch to arrange one.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>What are your hours?</span><span class="plus">+</span></div>
+          <div class="faq-a">Please message or call us to confirm current hours and availability for an appointment.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>How much do treatments cost?</span><span class="plus">+</span></div>
+          <div class="faq-a">Pricing depends on the treatment — contact us directly for current rates.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Where exactly are you located?</span><span class="plus">+</span></div>
+          <div class="faq-a">We're at 138 Kelvin Drive, Sandton, Gauteng, 2196 — see the map link below for directions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / CONTACT -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Based on Kelvin Drive, Sandton</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="visit-card">
+          <h3>Contact &amp; Location</h3>
+          <div class="info-line">
+            <div class="ico">📍</div>
+            <div class="txt">
+              <div class="t1">Address</div>
+              <div class="t2">138 Kelvin Drive, Sandton, Gauteng, 2196</div>
+            </div>
+          </div>
+          <div class="info-line">
+            <div class="ico">📞</div>
+            <div class="txt">
+              <div class="t1">Phone</div>
+              <a class="t2" href="tel:+27614079737">061 407 9737</a>
+            </div>
+          </div>
+          <div class="info-line">
+            <div class="ico">💬</div>
+            <div class="txt">
+              <div class="t1">WhatsApp</div>
+              <a class="t2" href="https://wa.me/27614079737?text=Hi%20Mellow%20Aesthetics%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20a%20treatment." target="_blank" rel="noopener">Message us</a>
+            </div>
+          </div>
+          <a class="directions" href="https://www.google.com/maps/search/?api=1&query=Mellow+Aesthetics+Clinic+138+Kelvin+Drive+Sandton" target="_blank" rel="noopener">Get directions →</a>
+        </div>
+        <div class="visit-card">
+          <h3>When you enquire, let us know</h3>
+          <ul class="ask-list">
+            <li>What treatment or concern you're interested in</li>
+            <li>Whether this would be your first visit</li>
+            <li>Your preferred day and time</li>
+            <li>Any questions about pricing or process</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Curious what's possible?</h2>
+      <p>Send us a message and let's talk about what you're looking for.</p>
+      <div class="cta-actions">
+        <a class="btn btn-mauve" href="https://wa.me/27614079737?text=Hi%20Mellow%20Aesthetics%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20a%20treatment." target="_blank" rel="noopener">Enquire on WhatsApp</a>
+        <a class="btn btn-outline" href="tel:+27614079737">Call 061 407 9737</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <p>&copy; <span id="year"></span> Mellow Aesthetics Clinic</p>
+    <p>Site by SXI Digital</p>
+  </div>
+</footer>
+
+<!-- Mobile sticky action bar -->
+<div class="m-bar">
+  <a class="btn btn-mauve" href="https://wa.me/27614079737?text=Hi%20Mellow%20Aesthetics%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20a%20treatment." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn btn-outline-dark" href="tel:+27614079737">Call</a>
+</div>
+
+<script>
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  burger.addEventListener('click', function(){
+    var isOpen = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // FAQ accordion
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      var wasOpen = item.classList.contains('open');
+      faqItems.forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen){ item.classList.add('open'); }
+    });
+  });
+</script>
+
+</body>
+</html>
